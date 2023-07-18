@@ -22,7 +22,7 @@ fi
 
 test_wrong_map()
 {
-	printf "\033[1K\r$PURPLE Testing wrong maps, n: $CYAN$1$RESET"
+	printf "\033[1K\r$PURPLE Testing wrong maps, n[$CYAN$1$PURPLE] ok[$GREEN$((i - ko))$PURPLE] ko[$RED$ko$PURPLE]$RESET"
 	i=$((i + 1))
 	../cub3d $2 >$FILE 2>&1 &
 	sleep .5
@@ -30,7 +30,10 @@ test_wrong_map()
 		kill -kill $(pgrep cub3d)
 		mv $FILE "out/$1.out"
 		ko=$((ko + 1))
-	elif [ $(grep "Error" $FILE | wc -l) -eq 0 ]; then
+	elif [ $(grep "rror" $FILE | wc -l) -eq 0 ]; then
+		mv $FILE "out/$1.out"
+		ko=$((ko + 1))
+	elif [ $(grep "fault" $FILE | wc -l) -gt 0 ] || [ $(grep "egmentation" $FILE | wc -l) -gt 0 ] || [ $(grep "dumped" $FILE | wc -l) -gt 0 ]; then
 		mv $FILE "out/$1.out"
 		ko=$((ko + 1))
 	fi
