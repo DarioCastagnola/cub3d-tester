@@ -17,7 +17,9 @@ When you want to run the tester you have to enter its folder ```cd cub3d-tester`
 and you can launch the tester with
 ```bash
 ./test.sh
+```
 or
+```bash
 sh test.sh
 ```
 
