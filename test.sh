@@ -11,13 +11,18 @@ FILE="out/file.out"
 rm -rf out >/dev/null 2>&1
 mkdir out >/dev/null 2>&1
 
-if [ -f "cub3d" ]; then
+if [ -f "../cub3d" ]; then
 	printf "$PURPLE cub3d already exists$RESET\n"
 else
 	printf "$PURPLE compiling cub3d...$RESET"
 	make -C .. > /dev/null 2>&1
 	make clean -C .. > /dev/null 2>&1
-	printf "\033[1K\r$PURPLE cub3d compiled...$RESET\n"
+	if ! [ -f "../cub3d" ]; then
+		printf "\r\033[K$RED cannot find '../cub3d'$RESET\n"
+		printf "$RED check if the executable has the correct name$RESET\n"
+		exit 42
+	fi
+	printf "\033[1K\r$PURPLE cub3d compiled$RESET\n"
 fi
 
 test_wrong_map()
