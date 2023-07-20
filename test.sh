@@ -1,10 +1,22 @@
 #!/bin/sh
 
-CYAN="\033[1;36m"
-GREEN="\033[1;32m"
-RED="\033[1;31m"
-PURPLE="\033[1;35m"
+shell_name=$(ps -p $$ -o command | tail -1 | awk '{print $1}')
+slashes=$(($(echo $shell_name | tr -cd / | wc -c | awk '{print $1}') + 1))
+shell_name=$(echo $shell_name | cut -d/ -f $slashes)
+
+# set colors
 RESET="\033[0m"
+if [ "$shell_name" = "sh" ] || [ "$shell_name" = "zsh" ]; then
+	RED="\033[38;5;124m"
+	CYAN="\033[38;5;81m"
+	GREEN="\033[38;5;40m"
+	PURPLE="\033[38;5;105m"
+else
+	RED="\033[1;31m"
+	CYAN="\033[1;36m"
+	GREEN="\033[1;32m"
+	PURPLE="\033[1;35m"
+fi
 
 FILE="out/file.out"
 
