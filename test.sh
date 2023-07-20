@@ -29,7 +29,9 @@ test_wrong_map()
 {
 	printf "\033[1K\r$PURPLE Testing wrong maps, n[$CYAN$1$PURPLE] ok[$GREEN$((i - ko))$PURPLE] ko[$RED$ko$PURPLE]$RESET"
 	i=$((i + 1))
-	../cub3d $2 >$FILE 2>&1 &
+	cat $2 > $FILE 2>/dev/null
+	printf "\n##################################################\n" >> $FILE
+	../cub3d $2 >>$FILE 2>&1 &
 	sleep .5
 	if ! [ "$(pgrep cub3d)" = "" ]; then
 		kill -kill $(pgrep cub3d)
