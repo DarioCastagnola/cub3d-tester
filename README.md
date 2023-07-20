@@ -3,7 +3,7 @@ A simple parser tester for cub3d
 
 ### Installation
 
-Do ```cd <path_to_cub3d>```
+Enter the folder where is your Makefile and where will be the executable ```cd <path_to_cub3d>```
 
 Now you can clone this repository with
 
