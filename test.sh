@@ -62,7 +62,7 @@ test_wrong_map()
 
 ko=0
 i=1
-while [ $i -lt 43 ]; do
+while [ $i -lt 49 ]; do
 	test_wrong_map $i "maps/wrong$i.cub"
 done
 # OTHER TESTS
