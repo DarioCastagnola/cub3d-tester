@@ -3,7 +3,7 @@ A simple parser tester for cub3d
 
 ### Installation
 
-Enter the folder where is your Makefile and where will be the executable ```cd <path_to_cub3d>```
+Access the folder in which your Makefile and executable are located ```cd <path_to_cub3d>```
 
 Now you can clone this repository with
 
@@ -26,7 +26,7 @@ sh test.sh
 ## Output
 
 The tester will tell you in real time how many tests have passed and which have not.
-Furthermore, once all the tests have been performed, a folder (out) will be created with the passed map and the output it gave.
+Furthermore, once all the tests have been performed, a folder (out) will be created containing the tested maps and their outputs.
 The file will be named 'out<map_number>.out' and the map and output will be separated by some '#'s.
 
 #### Pro tip
